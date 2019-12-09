@@ -1,5 +1,5 @@
 {
-  "name": "functor",
+  "name": "funcdor",
   "version": "0.0.4",
   "description": "Functional do style library",
   "main": "dist/index.js",
