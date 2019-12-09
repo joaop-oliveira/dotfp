@@ -1,6 +1,6 @@
 {
-  "name": "dotfp",
-  "version": "0.0.1",
+  "name": "funcdor",
+  "version": "0.0.5",
   "description": "Functional do style library",
   "main": "dist/index.js",
   "scripts": {
