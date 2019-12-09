@@ -1,5 +1,5 @@
 {
-  "name": "dotfp",
+  "name": "functor",
   "version": "0.0.2",
   "description": "Functional do style library",
   "main": "dist/index.js",
