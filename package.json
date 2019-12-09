@@ -1,0 +1,51 @@
+{
+  "name": "dotfp",
+  "version": "0.0.1",
+  "description": "Functional do style library",
+  "main": "index.js",
+  "scripts": {
+    "test:watch": "jest --watchAll",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joaop-oliveira/dotfp.git"
+  },
+  "keywords": [
+    "dot",
+    "fp",
+    "functional",
+    "programming",
+    "f",
+    "p",
+    "func",
+    "function",
+    "func",
+    "pro",
+    "develop",
+    "web",
+    "javascript",
+    "typescript",
+    "java",
+    "js",
+    "ts",
+    "react",
+    "nodejs",
+    "rx",
+    "reactive"
+  ],
+  "author": "Joao Paulo Oliveira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joaop-oliveira/dotfp/issues"
+  },
+  "homepage": "https://github.com/joaop-oliveira/dotfp#readme",
+  "devDependencies": {
+    "@types/jest": "^24.0.23",
+    "jest": "^24.9.0",
+    "prettier": "^1.19.1",
+    "ts-jest": "^24.2.0",
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.3"
+  }
+}
