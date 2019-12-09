@@ -1,18 +1,23 @@
-import { Left as LeftType, Right as RightType } from '../definitions';
-import { Left, Right } from '../either';
+import { Left } from '../either/left';
+import { Right } from '../either/right';
+import { Either } from '../either';
 
-export function tryCatch<L, R, T>(func: () => T): RightType<R>;
-export function tryCatch<L, R, T>(func: () => T): LeftType<L>;
-export function tryCatch<L, R, T>(func: () => T): LeftType<L> | RightType<R> {
-  try {
-    return Right<R>(func());
-  } catch (error) {
-    return Left<L>(error);
+export class Try {
+  public static catch<T>(func: () => T): Left<Error>;
+  public static catch<T>(func: () => T): Right<T>;
+
+  public static catch<T>(func: () => T): Left<Error> | Right<T> {
+    try {
+      return Right.from<T>(func());
+    } catch (error) {
+      return Left.from(error);
+    }
+  }
+
+  public static parseNumber(value: string): Left<string>;
+  public static parseNumber(value: string): Right<number>;
+
+  public static parseNumber(value: string): Left<string> | Right<number> {
+    return Either.fromNan(value.replace(',', '.'));
   }
 }
-
-// export function asyncTryCatch<L, R, T>(func: () => Promise<T>): Promise<RightType<R>>;
-// export function asyncTryCatch<L, R, T>(func: () => Promise<T>): Promise<LeftType<L>>;
-// export function asyncTryCatch<L, R, T>(func: () => Promise<T>): Promise<LeftType<L>> | Promise<RightType<R>> {
-//   return func().then((res) => Right<R>(res)).catch((err) => Left<L>(err))
-// }

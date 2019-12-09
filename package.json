@@ -2,9 +2,11 @@
   "name": "dotfp",
   "version": "0.0.1",
   "description": "Functional do style library",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test:watch": "jest --watchAll",
+    "build": "rm -rf dist && jest && tsc",
+    "ci": "rm -rf dist && jest && tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -42,10 +44,14 @@
   "homepage": "https://github.com/joaop-oliveira/dotfp#readme",
   "devDependencies": {
     "@types/jest": "^24.0.23",
+    "@types/lodash": "^4.14.149",
     "jest": "^24.9.0",
     "prettier": "^1.19.1",
     "ts-jest": "^24.2.0",
     "tslint": "^5.20.1",
     "typescript": "^3.7.3"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15"
   }
 }

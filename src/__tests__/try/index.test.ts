@@ -1,4 +1,5 @@
-import { tryCatch } from '../../try';
+import { Try } from '../../try';
+import { logIt } from '../../debug';
 
 const prom = () =>
   new Promise((res, rej) => {
@@ -7,16 +8,38 @@ const prom = () =>
     }, 1000);
   });
 
-const mockRight = jest.fn((value: string[]) => value[0]);
-const mockLeft = jest.fn((error) => error);
+const right = jest.fn((value: string[]) => value[0]);
+const left = jest.fn((error) => error);
 
 beforeEach(() => {
-  mockLeft.mockClear();
-  mockRight.mockClear();
+  left.mockClear();
+  right.mockClear();
 });
 
-describe('tryCatch', () => {
-  it('should call Right', () => {
-    tryCatch(async () => await prom()).fold(console.log, console.log);
+describe('Try', () => {
+  describe('catch', () => {
+    it('should call Right', () => {
+      Try.catch(() => 'hello').fold(left, right);
+      expect(right).toHaveBeenCalled();
+    });
+    it('should call Left', () => {
+      Try.catch(() => {
+        throw new Error('Ooops');
+      }).fold(left, right);
+      expect(left).toHaveBeenCalled();
+    });
+  });
+
+  describe('parseNumber', () => {
+    it('should call Right', () => {
+      Try.parseNumber('10,50').fold(left, right);
+      expect(right).toHaveBeenCalled();
+    });
+    it('should call Left', () => {
+      Try.parseNumber('@#$$%')
+        .map(logIt)
+        .fold(left, right);
+      expect(left).toHaveBeenCalled();
+    });
   });
 });
