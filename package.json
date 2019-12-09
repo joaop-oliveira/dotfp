@@ -1,6 +1,6 @@
 {
   "name": "dotfp",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Functional do style library",
   "main": "dist/index.js",
   "scripts": {
