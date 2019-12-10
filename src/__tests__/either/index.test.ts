@@ -1,6 +1,6 @@
 import { Either } from '../../either';
 
-const right = jest.fn((value: string[]) => value[0]);
+const right = jest.fn((value) => value);
 const left = jest.fn((error) => error);
 
 beforeEach(() => {
@@ -18,6 +18,12 @@ describe('Either', () => {
       Either.fromNullable(2).fold(left, right);
       expect(right).toHaveBeenCalled();
     });
+    it('should be mappable', () => {
+      Either.fromNullable(2)
+        .map((x) => x.toString())
+        .fold(left, right);
+      expect(right).toHaveBeenCalledWith('2');
+    });
   });
   describe('fromEmpty', () => {
     it('should call left', () => {
@@ -28,6 +34,12 @@ describe('Either', () => {
       Either.fromEmpty([2]).fold(left, right);
       expect(right).toHaveBeenCalled();
     });
+    it('should be mappable', () => {
+      Either.fromEmpty([2])
+        .map((x) => x[0].toString())
+        .fold(left, right);
+      expect(right).toHaveBeenCalledWith('2');
+    });
   });
   describe('fromNan', () => {
     it('should call left', () => {
@@ -37,6 +49,12 @@ describe('Either', () => {
     it('should call right', () => {
       Either.fromNan('10.50').fold(left, right);
       expect(right).toHaveBeenCalled();
+    });
+    it('should be mappable', () => {
+      Either.fromNan('10.50')
+        .map((x) => x.toFixed(2))
+        .fold(left, right);
+      expect(right).toHaveBeenCalledWith('10.50');
     });
   });
 });

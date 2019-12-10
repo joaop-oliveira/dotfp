@@ -8,7 +8,7 @@ const prom = () =>
     }, 1000);
   });
 
-const right = jest.fn((value: string[]) => value[0]);
+const right = jest.fn((value) => value);
 const left = jest.fn((error) => error);
 
 beforeEach(() => {
