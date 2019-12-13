@@ -7,4 +7,5 @@ __export(require("./box"));
 __export(require("./either"));
 __export(require("./try"));
 __export(require("./debug"));
+__export(require("./composes"));
 //# sourceMappingURL=index.js.map

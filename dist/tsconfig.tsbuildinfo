@@ -177,17 +177,17 @@
         "version": "6abb1346de59e1b790a78503fd66177fb3cfc70ad162e8d641291f5d043258a5",
         "signature": "cb9085c4e5b4905b32e0b30c5d8f349b9cf714dff24b81ca87bd4d04bc86b4d7"
       },
+      "../src/composes/index.ts": {
+        "version": "2697f3e54c15297f93b808888be0254f9f406c4cc826ff999c763bda33a51b35",
+        "signature": "c39ea45c7e1a6ef19808dcd0143dccb19b4e9c9c7fc280783fcc2e8b25437b2c"
+      },
       "../src/index.ts": {
-        "version": "dc7e0458f3ff229426eace7ade5d757c5337d658266db72ec3d893b6958f9efe",
-        "signature": "dc7e0458f3ff229426eace7ade5d757c5337d658266db72ec3d893b6958f9efe"
+        "version": "5e2d1d2a1218092bb6e6be8590cbc0145a19ec3286a3cb9607ccfd90ad8aebae",
+        "signature": "5e2d1d2a1218092bb6e6be8590cbc0145a19ec3286a3cb9607ccfd90ad8aebae"
       },
       "../src/__tests__/box/index.test.ts": {
         "version": "49d5d28b01f514166c7a7e081a1816d9461c41659c496b05b197e2648e64d681",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
-      },
-      "../src/composes/index.ts": {
-        "version": "2697f3e54c15297f93b808888be0254f9f406c4cc826ff999c763bda33a51b35",
-        "signature": "c39ea45c7e1a6ef19808dcd0143dccb19b4e9c9c7fc280783fcc2e8b25437b2c"
       },
       "../src/__tests__/composes/index.test.ts": {
         "version": "62e5065b58acab241bb232ce6e75963a43508706ed7c90ae462a932658183252",
@@ -480,17 +480,18 @@
         "../src/either/right/index.ts",
         "../src/either/index.ts"
       ],
+      "../src/composes/index.ts": [
+        "../node_modules/@types/lodash/ts3.1/index.d.ts"
+      ],
       "../src/index.ts": [
         "../src/box/index.ts",
         "../src/either/index.ts",
         "../src/try/index.ts",
-        "../src/debug/index.ts"
+        "../src/debug/index.ts",
+        "../src/composes/index.ts"
       ],
       "../src/__tests__/box/index.test.ts": [
         "../src/box/index.ts"
-      ],
-      "../src/composes/index.ts": [
-        "../node_modules/@types/lodash/ts3.1/index.d.ts"
       ],
       "../src/__tests__/composes/index.test.ts": [
         "../src/composes/index.ts"
@@ -551,7 +552,8 @@
         "../src/box/index.ts",
         "../src/either/index.ts",
         "../src/try/index.ts",
-        "../src/debug/index.ts"
+        "../src/debug/index.ts",
+        "../src/composes/index.ts"
       ],
       "../src/either/index.ts": [
         "../src/either/left/index.ts",
@@ -803,9 +805,9 @@
       "../src/debug/index.ts",
       "../src/either/index.ts",
       "../src/try/index.ts",
+      "../src/composes/index.ts",
       "../src/index.ts",
       "../src/__tests__/box/index.test.ts",
-      "../src/composes/index.ts",
       "../src/__tests__/composes/index.test.ts",
       "../src/__tests__/either/index.test.ts",
       "../src/__tests__/try/index.test.ts",
