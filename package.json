@@ -1,6 +1,6 @@
 {
   "name": "funcdor",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "description": "Functional do style library",
   "main": "dist/index.js",
   "scripts": {
@@ -45,6 +45,7 @@
   "devDependencies": {
     "@types/jest": "^24.0.23",
     "@types/lodash": "^4.14.149",
+    "@types/node": "^12.12.20",
     "jest": "^24.9.0",
     "prettier": "^1.19.1",
     "ts-jest": "^24.2.0",
