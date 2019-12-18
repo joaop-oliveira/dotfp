@@ -1,11 +1,12 @@
 import { Try } from '../../try';
 import { logIt } from '../../debug';
 import _ from 'lodash';
+import { Right } from '../../either/right';
 
 const right = jest.fn((value) => value);
 const left = jest.fn((error) => error);
 
-const hugeData = _.range(10000).map((number) => ({
+const hugeData = _.range(100000).map((number) => ({
   square: number * number,
   even: number % 2 === 0,
   double: number * 2,
@@ -45,10 +46,17 @@ describe('Try', () => {
   });
 });
 
-describe('tryGzip', () => {
+describe('copmpress', () => {
   it('should compress huge object', async () => {
-    const compressed = await Try.compress(hugeData);
+    const compressed = await Try.gzip(hugeData);
     compressed.fold(left, right);
+    expect(right).toHaveBeenCalled();
+  });
+  it('should gunzip huge buffer', async () => {
+    const compressed = await Try.gzip(hugeData);
+    const buff = compressed.chain((buff) => buff);
+    const uncompressed = await Try.gunzip(buff);
+    uncompressed.fold(left, right);
     expect(right).toHaveBeenCalled();
   });
 });
