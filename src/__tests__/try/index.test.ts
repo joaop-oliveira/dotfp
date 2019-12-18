@@ -1,15 +1,16 @@
 import { Try } from '../../try';
 import { logIt } from '../../debug';
-
-const prom = () =>
-  new Promise((res, rej) => {
-    setTimeout(() => {
-      res('Im late');
-    }, 1000);
-  });
+import _ from 'lodash';
 
 const right = jest.fn((value) => value);
 const left = jest.fn((error) => error);
+
+const hugeData = _.range(10000).map((number) => ({
+  square: number * number,
+  even: number % 2 === 0,
+  double: number * 2,
+  triple: number * 3,
+}));
 
 beforeEach(() => {
   left.mockClear();
@@ -41,5 +42,13 @@ describe('Try', () => {
         .fold(left, right);
       expect(left).toHaveBeenCalled();
     });
+  });
+});
+
+describe('tryGzip', () => {
+  it('should compress huge object', async () => {
+    const compressed = await Try.compress(hugeData);
+    compressed.fold(left, right);
+    expect(right).toHaveBeenCalled();
   });
 });
