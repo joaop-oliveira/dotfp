@@ -58,3 +58,16 @@ describe('Either', () => {
     });
   });
 });
+
+describe('fromObject', () => {
+  it('should call right', () => {
+    const person = { name: 'John', age: 24 };
+    Either.fromObject(person).fold(left, right);
+    expect(right).toHaveBeenCalled();
+  });
+  it('should call left', () => {
+    const person = 'person';
+    Either.fromObject(person).fold(left, right);
+    expect(left).toHaveBeenCalled();
+  });
+});

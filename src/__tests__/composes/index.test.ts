@@ -11,6 +11,7 @@ import {
   divide,
   modulus,
   total,
+  has,
 } from '../../composes';
 
 describe('same', () => {
@@ -130,5 +131,21 @@ describe('total', () => {
     const values = [2, 2, 2, 2];
     const eight = total(values)();
     expect(eight).toBe(8);
+  });
+});
+
+describe('has', () => {
+  it('shouldd return true with numbers', () => {
+    const numbers = [1, 2, 3, 4, 5];
+    const hasFive = has(5);
+    expect(hasFive(numbers)).toBeTruthy();
+  });
+  it('should return true with array of objects', () => {
+    const persons = [
+      { name: 'Joao', age: 24 },
+      { name: 'Paulo', age: 54 },
+    ];
+    const hasJoao = has('Joao');
+    expect(hasJoao(persons)).toBeTruthy();
   });
 });

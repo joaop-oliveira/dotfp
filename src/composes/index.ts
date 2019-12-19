@@ -31,3 +31,7 @@ export const total: Total = <T>(objects: T[] | []) => (field?: string) =>
     // @ts-ignore
     field ? (_.isNumber(prev) ? add(prev)(curr[field]) : add(prev[field])(curr[field])) : add(prev)(curr),
   );
+
+export type Has = <T>(item: any) => (array: T[]) => boolean;
+
+export const has: Has = <T>(item: any) => (array: T[]) => array.some((data) => data === item);

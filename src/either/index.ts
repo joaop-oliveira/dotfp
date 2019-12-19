@@ -2,6 +2,7 @@ import { Left } from './left';
 import { Right } from './right';
 import { isNull, isEmpty, isNaN } from 'lodash';
 import { logIt } from '../debug';
+import _ from 'lodash';
 
 export interface AbstractEither {
   fromNullable: <T>(value: T) => Left<string> | Right<T>;
@@ -29,5 +30,11 @@ export class Either {
     return Either.fromNullable<T>(value)
       .map((str) => Number(str))
       .chain((num) => (isNaN(num) ? Left.from(`Valor ${value} nao e um numero`) : Right.from(num)));
+  }
+
+  public static fromObject<T>(value: T): Right<T>;
+  public static fromObject<T>(value: T): Left<string>;
+  public static fromObject<T>(value: T): Left<string> | Right<T> {
+    return _.isObject(value) ? Right.from<T>(value) : Left.from<string>('O valor informado nao e um objeto');
   }
 }
