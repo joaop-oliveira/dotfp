@@ -71,3 +71,18 @@ describe('fromObject', () => {
     expect(left).toHaveBeenCalled();
   });
 });
+
+describe('ifRight', () => {
+  it('should call right if value is passed down to right', () => {
+    Either.fromNullable(2)
+      .ifRight(right)
+      .fold(left, right);
+    expect(right).toHaveBeenCalledTimes(2);
+  });
+  it('should not call ifRgith if the passed value ends up in left', () => {
+    Either.fromNullable(null)
+      .ifRight(right)
+      .fold(left, right);
+    expect(right).not.toHaveBeenCalled();
+  });
+});

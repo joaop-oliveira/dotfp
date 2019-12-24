@@ -8,6 +8,11 @@ export class Left<T> {
   public map<V>(func: Returnable<T, V>): Left<T> {
     return new Left(this.value);
   }
+
+  public ifRight<V>(func: Returnable<T, V>) {
+    return new Left(this.value);
+  }
+
   public chain<V>(func: Returnable<T, V>): Left<T> {
     return new Left(this.value);
   }

@@ -12,6 +12,7 @@ import {
   modulus,
   total,
   has,
+  contains,
 } from '../../composes';
 
 describe('same', () => {
@@ -147,5 +148,26 @@ describe('has', () => {
     ];
     const hasJoao = has('Joao');
     expect(hasJoao(persons)).toBeTruthy();
+  });
+  it('should return false', () => {
+    const persons = [
+      { name: 'Joao', age: 24 },
+      { name: 'Paulo', age: 54 },
+    ];
+    const hasJoao = has('John');
+    expect(hasJoao(persons)).toBeFalsy();
+  });
+});
+
+describe('contains', () => {
+  it('should return true', () => {
+    const person = { name: 'Joao', age: 24 };
+    const personContains = contains(person);
+    expect(personContains('Joao')).toBeTruthy();
+  });
+  it('should return false', () => {
+    const person = { name: 'Paulo', age: 54 };
+    const personContains = contains(person);
+    expect(personContains('Joao')).toBeFalsy();
   });
 });

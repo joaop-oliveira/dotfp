@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test:watch": "jest --watchAll",
-    "build": "rm -rf dist && jest && tsc && npm version patch && git commit -am 'publishing' && npm publish",
+    "build": "rm -rf dist && jest && tsc && npm version patch && git add. && git commit -am 'publishing' && npm publish",
     "ci": "rm -rf dist && jest && tsc && git commit -am 'publishing' &&  npm version patch && npm publish",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

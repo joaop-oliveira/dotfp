@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import { Either } from '../either';
 
 export type Same = (first: any) => (second: any) => boolean;
 export type Different = (first: any) => (second: any) => boolean;
@@ -33,5 +34,15 @@ export const total: Total = <T>(objects: T[] | []) => (field?: string) =>
   );
 
 export type Has = <T>(item: any) => (array: T[]) => boolean;
+export type Contains = <T>(obj: any) => (item: any) => boolean;
 
-export const has: Has = <T>(item: any) => (array: T[]) => array.some((data) => data === item);
+export const has: Has = <T>(item: any) => (array: T[]) =>
+  array.some((data: T) => {
+    return Either.fromObject(data).fold(
+      () => data === item,
+      () => Object.values(data).includes(item),
+    );
+  });
+
+export const contains = <T>(obj: T) => (item: any) =>
+  _.isObject(obj) ? Object.values(obj).includes(item) : 'Parametro informado não é do tipo objeto';
